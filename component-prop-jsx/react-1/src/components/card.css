@@ -1,0 +1,14 @@
+.card{
+    border:1px solid black;
+    width:20vw;
+    /* margin:2vw; */
+    display: flex;
+    border-radius: 5px ;
+}
+.img{
+    width: 150px;
+    border-radius: 5px;
+}
+.text{
+    padding:0px 10px;
+}
