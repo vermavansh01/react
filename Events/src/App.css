@@ -1,0 +1,9 @@
+.red{
+  width:344px;
+  height:233px;
+  background-color: red;
+  color:white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
