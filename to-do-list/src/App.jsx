@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import { v4 as uuidv4 } from 'uuid';
 
@@ -6,20 +6,37 @@ function App() {
   const [todo, setTodo] = useState("")
   const [todos, setTodos] = useState([])
 
+useEffect(()=>{
+  let todoString=localStorage.getItem("todos")
+  if(todoString){+
+    let todos = JSON.parse(localStorage.getItem("todos"))
+    setTodos(todos)
+  }
+},[])
+
+  const saveToLS = (params) => {
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }
+
+
   const handleEdit = (e, id) => {
     let t = todos.filter(i => i.id === id)
     setTodo(t[0].todo)
+    let newTodos = todos.filter(item => item.id !== id);
+    setTodos(newTodos);
+    saveToLS()
   }
   const handleDelete = (e, id) => {
     if (confirm("Are you sure you want to delete this todo?")) {
       let newTodos = todos.filter(item => item.id !== id);
       setTodos(newTodos);
+      saveToLS()
     }
   }
   const handleAdd = () => {
     setTodos([...todos, { id: uuidv4(), todo, isCompleted: false }])
     setTodo("")
-    console.log(todos)
+    saveToLS()
   }
   const handleChange = (e) => {
     setTodo(e.target.value)
@@ -32,6 +49,7 @@ function App() {
     let newTodos = [...todos];
     newTodos[index].isCompleted = !newTodos[index].isCompleted;
     setTodos(newTodos)
+    saveToLS()
   }
 
 
@@ -41,7 +59,7 @@ function App() {
       <div className="container bg-violet-300  mx-auto my-4 p-4 rounded-xl min-h-[90vh]">
         <div className="addTodo bg-violet-400 justify-center py-2 flex  border border-black hover:bg-violet-500">
           <h1 className='text-lg font-bold '>Add a Todo :&nbsp;</h1>
-          <input onChange={handleChange} value={todo} type="text" className='w-1/2' />
+          <input onChange={handleChange} onKeyDown={(e) => { if (e.key === 'Enter') handleAdd(); }} value={todo} type="text" className='w-1/2' />
           <button onClick={handleAdd} className='border border-black bg-violet-600 hover:bg-violet-800  text-white mx-4 px-2 py-1 rounded-md '>Save
           </button>
         </div>
