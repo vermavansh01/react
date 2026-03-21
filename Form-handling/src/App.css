@@ -1,0 +1,53 @@
+.form {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  background-color: palevioletred;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box  ;
+}
+
+#username {
+  width: 200px;
+  border: 1px solid black;
+  height: 30px;
+  border-radius: 5px;
+  margin: 2px
+}
+
+#password {
+  width: 200px;
+  border: 1px solid black;
+  height: 30px;
+  border-radius: 5px;
+  margin: 2px
+}
+
+#submit {
+  width: 206px;
+  border: 1px solid black;
+  height: 30px;
+  border-radius: 5px;
+  background-color: rgb(51, 255, 0);
+  font-size: 15px;
+  font-weight: 600;
+  margin: 2px
+}
+
+.red {
+  width: 200px;
+  color: red;
+  font-weight: 600;
+  margin: 2px
+}
+.load{
+  text-align: center;
+  padding:2px
+}
