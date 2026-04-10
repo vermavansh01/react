@@ -12,7 +12,7 @@ function App() {
     handleSubmit,
     setError,
     watch,
-    formState: { errors, isSubmitting, },
+    formState: { errors, isSubmitting }
   } = useForm()
 
   const delay = (d) => {
@@ -34,11 +34,11 @@ function App() {
 
     let res = await r.text()
     console.log(data, res)
-    // if (data.username ==="mohit"){
-    //   setError("myform",{message:"username is  invalid"})
-    // }else if (data.username ==="vansh"){
-    //   setError("blocked",{message:"This user is blocked"})
-    // }
+    if (data.username ==="mohit"){
+      setError("myform",{message:"username is  invalid"})
+    }else if (data.username ==="vansh"){
+      setError("blocked",{message:"This user is blocked"})
+    }
   }
 
   return (
